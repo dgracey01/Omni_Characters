@@ -17,10 +17,8 @@ The goal is a character you can genuinely talk with: **one model, one identity �
 # Quantization
 
 The quant ladder that IS recorded (deterministic grader, X/gates · Health 0–100)
-Q8_0 (≈F16 anchor)	Q4	Q3_K_M	IQ3_M
-Coding	0/5	0–1/5	—	2/5
-Prose / voice	27/30 · 93.3	30/30 · 97.8–100	30/30 · 100	30/30 · 100
-Narrative	24/25 · 93.7	24/25 · 93.0 (healed) / 82 (base)	22/25 · 82.0	23/25 · 87.7
+<img width="1128" height="201" alt="image" src="https://github.com/user-attachments/assets/3aee1965-1d15-4176-a5ca-51614faf57c3" />
+
 (Q8/Q4-healed from §8; Q3_K_M & IQ3_M from the base-Instruct raw runs — hence the small narrative spread; it's model-lineage + sampling noise, not a quant cliff.)
 
 The library's own verdict, verbatim: "Prose and Narrative are flat across quants (Q8 even scored lower on Prose — sampling noise)… the 0/5 on code is brain/prune damage, not quantization damage. For every behavior that works, Q4 is as good as full precision." Notice Q8 scored lower on prose than Q3 — that's how quant-invariant this is; the noise is bigger than the quant effect.
