@@ -14,16 +14,28 @@ Each character is organized by the base model it was built on (for example `Qwen
 The goal is a character you can genuinely talk with: **one model, one identity — thought and voice, together.**
 
 
+
 # Quantization
 
-The quant ladder that IS recorded (deterministic grader, X/gates · Health 0–100)
-<img width="1128" height="201" alt="image" src="https://github.com/user-attachments/assets/3aee1965-1d15-4176-a5ca-51614faf57c3" />
+Quantization is capability-invariant
+Squeezing a 30-billion-parameter mixture-of-experts brain from near-lossless 8-bit down to 3-bit does not move what it can actually do. Prose and narrative quality hold flat; the one thing it can't do — write code — stays broken at every precision. That failure is architectural, not quantization.
 
-(Q8/Q4-healed from §8; Q3_K_M & IQ3_M from the base-Instruct raw runs — hence the small narrative spread; it's model-lineage + sampling noise, not a quant cliff.)
+<img width="1650" height="1050" alt="image" src="https://github.com/user-attachments/assets/b00ab16c-a5a9-4d15-8646-6188e06008e4" />
 
-The library's own verdict, verbatim: "Prose and Narrative are flat across quants (Q8 even scored lower on Prose — sampling noise)… the 0/5 on code is brain/prune damage, not quantization damage. For every behavior that works, Q4 is as good as full precision." Notice Q8 scored lower on prose than Q3 — that's how quant-invariant this is; the noise is bigger than the quant effect.
 
-So your instinct is confirmed: dropping the brain to Q3 costs ~nothing in usable quality. Coding stays 0 (it was never there — base-limited, MultiPL-E aside), prose stays ~100, narrative stays ~82–94 with the only wobble being clean-termination (the same EOS-stop thing we already saw), not vocab collapse.
+# The Quant ladder, in full:
+Scores are gates · health from a model-free grader. Read across each row: the number barely moves.
+<img width="1645" height="568" alt="image" src="https://github.com/user-attachments/assets/c3d86010-6f71-4f78-977c-fdb669aa64e5" />
+
+
+
+
+What the numbers say:
+<img width="1585" height="1097" alt="image" src="https://github.com/user-attachments/assets/3c2d1fc0-757b-4a9c-ab27-b844a4fbcb42" />
+
+
+
+Model: Qwen3-Omni-30B-A3B thinker (MoE, ~3B active). Prose = 6 RP registers; Narrative = 5 story tasks; Coding = 5 build-from-spec modules graded by executability.
 ---
 
 *To be Continued*
